@@ -1,15 +1,19 @@
 package com.coaches;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.fortuneservices.FortuneService;
 
 @Component
+@Scope("singleton")
 public class FishKeepingCoach implements Coach {
 	
-	private FortuneService fortuneService;
-
+	@Autowired								// FIELD INJECTION
+    @Qualifier("randomFortuneService")
+	private FortuneService fortuneService;		
 
 	
 	@Override
@@ -20,11 +24,7 @@ public class FishKeepingCoach implements Coach {
 	@Override
 	public String getDailyFortune() {
 		return fortuneService.getFortune();
-		//		return "may you enjoy your fishies";
 	}
 
-    @Autowired				// SETTER INJECTION
-    public void setFortuneService(FortuneService fortuneService) {
-    	this.fortuneService = fortuneService;
-    }
+
 }

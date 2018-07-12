@@ -1,0 +1,3 @@
+fortune 6
+fortune 7 is awesome
+fortune 8 here for you
